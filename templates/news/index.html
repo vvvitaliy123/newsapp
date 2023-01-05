@@ -1,0 +1,48 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% load static %}
+{% load i18n %}
+<div>
+    <h2 style="color: purple">
+        {% trans 'NewsPage' %}
+    </h2>
+    <table class="news" border="1">
+        <thead>
+            <tr>
+                <th>{% trans 'ImageColName' %}</th>
+                <th>{% trans 'TitleColName' %}</th>
+                <th>{% trans 'AboutColName' %}</th>
+                <th>{% trans 'PublishColName' %}</th>
+                <th>{% trans 'AuthorColName' %}</th>
+                <th>{% trans 'SourceColName' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in all_news %}
+                <tr>
+                    <td>
+                        <img src="media/{{ post.image }}" alt="-"
+                            width="75" height="75">
+                    </td>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.about }}</td>
+                    <td>{{ post.publish }}</td>
+                    <td>{{ post.author }}</td>
+                    <td>{{ post.source }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<style>
+    .news {
+        width: 100%;
+        margin: 25px;
+    }
+    .news th, 
+    .news td {
+        padding: 3px;
+    }
+</style>
+{% endblock content %}
